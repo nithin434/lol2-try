@@ -5,6 +5,7 @@ import type React from "react"
 import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { signIn, useSession } from "next-auth/react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -16,10 +17,31 @@ import { motion } from "framer-motion"
 
 export default function AuthPage() {
   const router = useRouter()
+  const { data: session, status } = useSession()
   const [isLoading, setIsLoading] = useState(false)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [name, setName] = useState("")
+
+  // Redirect if already authenticated
+  if (status === "loading") {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="flex items-center space-x-2">
+          <div className="w-5 h-5 border-2 border-emerald-600 border-t-transparent rounded-full animate-spin"></div>
+          <span className="text-gray-600">Loading...</span>
+        </div>
+      </div>
+    )
+  }
+
+  if (session) {
+    // Use window.location for external redirect to avoid Next.js routing issues
+    if (typeof window !== 'undefined') {
+      window.location.href = "http://35.200.140.65:5000/my-resumes"
+    }
+    return null
+  }
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault()
@@ -41,13 +63,23 @@ export default function AuthPage() {
     }, 1500)
   }
 
-  const handleSocialLogin = (provider: string) => {
+  const handleSocialLogin = async (provider: string) => {
     setIsLoading(true)
-    // Handle social login
-    setTimeout(() => {
+    try {
+      const result = await signIn(provider, { 
+        callbackUrl: "http://35.200.140.65:5000/my-resumes",
+        redirect: false 
+      })
+      
+      if (result?.error) {
+        console.error("Authentication error:", result.error)
+        setIsLoading(false)
+      }
+      // If successful, the redirect will be handled by NextAuth
+    } catch (error) {
+      console.error("Authentication error:", error)
       setIsLoading(false)
-      window.location.href = "https://your-dashboard-url.com"
-    }, 1500)
+    }
   }
 
   return (
