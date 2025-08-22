@@ -1,20 +1,39 @@
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import GitHubProvider from "next-auth/providers/github"
-import { validateAuthConfig, authConfig } from "@/lib/auth-config"
 
-// Validate environment variables
-validateAuthConfig()
+// Check for proper NEXTAUTH_SECRET
+if (!process.env.NEXTAUTH_SECRET || process.env.NEXTAUTH_SECRET === 'your-nextauth-secret-key-here-change-in-production') {
+  console.error("❌ NEXTAUTH_SECRET is not properly set. Please generate a secure secret.")
+  throw new Error("NEXTAUTH_SECRET must be a proper generated secret, not the placeholder value")
+}
+
+// Check other required environment variables
+const requiredVars = {
+  GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+  GITHUB_ID: process.env.GITHUB_ID,
+  GITHUB_SECRET: process.env.GITHUB_SECRET,
+}
+
+const missingVars = Object.entries(requiredVars)
+  .filter(([key, value]) => !value)
+  .map(([key]) => key)
+
+if (missingVars.length > 0) {
+  console.error(`❌ Missing environment variables: ${missingVars.join(', ')}`)
+  throw new Error(`Missing required environment variables: ${missingVars.join(', ')}`)
+}
 
 const handler = NextAuth({
   providers: [
     GoogleProvider({
-      clientId: authConfig.google.clientId,
-      clientSecret: authConfig.google.clientSecret,
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
     GitHubProvider({
-      clientId: authConfig.github.clientId,
-      clientSecret: authConfig.github.clientSecret,
+      clientId: process.env.GITHUB_ID!,
+      clientSecret: process.env.GITHUB_SECRET!,
     }),
   ],
   callbacks: {
@@ -24,9 +43,10 @@ const handler = NextAuth({
       return true
     },
     async redirect({ url, baseUrl }) {
+      console.log("Redirect callback:", { url, baseUrl, backendUrl: process.env.BACKEND_API_URL })
       // Only redirect to backend if coming from auth flow
       if (url.startsWith(baseUrl)) {
-        return `${authConfig.backend.url}/my-resumes`
+        return `${process.env.BACKEND_API_URL || 'http://35.200.140.65:5000'}/my-resumes`
       }
       return url
     },
@@ -47,8 +67,9 @@ const handler = NextAuth({
   },
   pages: {
     signIn: '/login',
+    error: '/auth-error', // Custom error page
   },
-  debug: process.env.NODE_ENV === 'development',
+  debug: true, // Enable debug for troubleshooting
 })
 
 export { handler as GET, handler as POST }
