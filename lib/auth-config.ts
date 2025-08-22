@@ -9,7 +9,7 @@ export const authConfig = {
     clientSecret: process.env.GITHUB_SECRET!,
   },
   nextauth: {
-    url: process.env.NEXTAUTH_URL || 'https://syntexa.app',
+    url: process.env.NEXTAUTH_URL || 'https://lol2-try.vercel.app',
     secret: process.env.NEXTAUTH_SECRET!,
   },
   backend: {
