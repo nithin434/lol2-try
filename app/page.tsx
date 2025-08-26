@@ -81,7 +81,7 @@ export default function Home() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Link href="/login">
+            <a href="https://syntexa.app/login">
               <Button
                 variant="ghost"
                 size="sm"
@@ -89,12 +89,12 @@ export default function Home() {
               >
                 Sign In
               </Button>
-            </Link>
-            <Link href="/upload">
+            </a>
+            <a href="https://syntexa.app/upload">
               <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg">
                 Try Resume AI
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
       </header>

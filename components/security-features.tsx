@@ -109,12 +109,12 @@ export function SecurityFeatures() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/upload">
+              <a href="https://syntexa.app/upload">
                 <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white">
                   Start Free Trial
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-              </Link>
+              </a>
               <Link href="/security">
                 <Button variant="outline" size="lg" className="border-emerald-600 text-emerald-600 hover:bg-emerald-50">
                   Learn About Security

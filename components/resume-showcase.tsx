@@ -79,12 +79,12 @@ export function ResumeShowcase() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/upload">
+              <a href="https://syntexa.app/upload">
                 <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3">
                   Upload Resume Now
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-              </Link>
+              </a>
               <Link href="/demo">
                 <Button variant="outline" size="lg" className="border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-3">
                   Watch Demo

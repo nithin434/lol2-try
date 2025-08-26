@@ -168,7 +168,7 @@ export function HeroSection() {
             {/* CTA Buttons */}
             <div className="space-y-6">
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/login">
+                <a href="https://syntexa.app/login">
                   <Button
                     size="lg"
                     className="bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white transition-all duration-300 group text-lg px-8 py-4 shadow-lg hover:shadow-emerald-500/25 relative overflow-hidden"
@@ -177,7 +177,7 @@ export function HeroSection() {
                     <span className="relative">Start Free Today</span>
                     <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300 relative" />
                   </Button>
-                </Link>
+                </a>
 
                 <Button
                   variant="outline"
