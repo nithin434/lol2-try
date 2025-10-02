@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import Head from "next/head"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
@@ -564,8 +565,67 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     )
   }
 
+  // Structured data for individual blog post
+  const blogPostStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.excerpt,
+    "image": `https://main.syntexa.app${post.image}`,
+    "author": {
+      "@type": "Person",
+      "name": post.author,
+      "jobTitle": post.authorTitle
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Syntexa",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://main.syntexa.app/logo.png"
+      }
+    },
+    "datePublished": post.date,
+    "dateModified": post.date,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://main.syntexa.app/blogs/${post.slug}`
+    },
+    "articleSection": post.category,
+    "keywords": post.tags?.join(", "),
+    "wordCount": post.readTime,
+    "articleBody": post.content.introduction
+  }
+
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
+      <Head>
+        <title>{post.title} | Syntexa Career Blog</title>
+        <meta name="description" content={post.excerpt} />
+        <meta name="keywords" content={`${post.tags?.join(", ")}, AI resume tips, career advice, job search strategies, professional development, ${post.category.toLowerCase()}`} />
+        <meta name="author" content={post.author} />
+        <meta property="article:author" content={post.author} />
+        <meta property="article:published_time" content={post.date} />
+        <meta property="article:section" content={post.category} />
+        <meta property="article:tag" content={post.tags?.join(", ")} />
+        <meta property="og:title" content={`${post.title} | Syntexa Career Blog`} />
+        <meta property="og:description" content={post.excerpt} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={`https://main.syntexa.app/blogs/${post.slug}`} />
+        <meta property="og:image" content={`https://main.syntexa.app${post.image}`} />
+        <meta property="og:article:author" content={post.author} />
+        <meta property="og:article:published_time" content={post.date} />
+        <meta property="og:article:section" content={post.category} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${post.title} | Syntexa`} />
+        <meta name="twitter:description" content={post.excerpt} />
+        <meta name="twitter:image" content={`https://main.syntexa.app${post.image}`} />
+        <meta name="twitter:creator" content={`@${post.author.toLowerCase().replace(' ', '')}`} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostStructuredData) }}
+        />
+      </Head>
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse"></div>

@@ -4,6 +4,7 @@ import type React from "react"
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Head from "next/head"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -35,8 +36,58 @@ export default function ContactPage() {
     }, 2000)
   }
 
+  // Structured data for Contact page
+  const contactStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Syntexa - AI Career Support & Customer Service",
+    "description": "Get in touch with Syntexa's AI career experts for support with resume optimization, cover letters, and career acceleration services.",
+    "url": "https://main.syntexa.app/contact",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Syntexa",
+      "url": "https://main.syntexa.app",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+1-555-SYNTEXA",
+          "contactType": "customer service",
+          "areaServed": "Worldwide",
+          "availableLanguage": "English"
+        },
+        {
+          "@type": "ContactPoint",
+          "email": "support@main.syntexa.app",
+          "contactType": "customer service",
+          "areaServed": "Worldwide"
+        }
+      ],
+      "sameAs": [
+        "https://discord.gg/qNHAJzYQ"
+      ]
+    }
+  }
+
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
+      <Head>
+        <title>Contact Syntexa - AI Career Support & Customer Service | Get Help</title>
+        <meta name="description" content="Contact Syntexa's AI career experts for support with resume optimization, cover letters, job search assistance, and career acceleration services. Join our Discord community for instant help." />
+        <meta name="keywords" content="contact syntexa, AI career support, resume help, cover letter assistance, job search support, career coaching contact, AI resume analyzer support, customer service, technical support, career consultation, professional development help" />
+        <meta property="og:title" content="Contact Syntexa - AI Career Support & Customer Service" />
+        <meta property="og:description" content="Get in touch with Syntexa's AI career experts for support with resume optimization and career acceleration services." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://main.syntexa.app/contact" />
+        <meta property="og:image" content="https://main.syntexa.app/email-templates.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Contact Syntexa - AI Career Support" />
+        <meta name="twitter:description" content="Get expert help with AI-powered resume optimization and career acceleration services." />
+        <meta name="twitter:image" content="https://main.syntexa.app/email-templates.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(contactStructuredData) }}
+        />
+      </Head>
       {/* Dynamic Grid Background */}
       <div className="absolute inset-0">
         <div

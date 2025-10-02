@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Head from "next/head"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -117,8 +118,50 @@ export default function BlogsPage() {
     return matchesCategory && matchesSearch
   })
 
+  // Structured data for Blog page
+  const blogStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Syntexa Career Blog - AI Resume Tips & Job Search Strategies",
+    "description": "Expert career advice, AI resume optimization tips, cover letter strategies, and job search insights from Syntexa's career professionals.",
+    "url": "https://main.syntexa.app/blogs",
+    "mainEntity": {
+      "@type": "WebSite",
+      "name": "Syntexa Career Blog",
+      "url": "https://main.syntexa.app/blogs"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Syntexa",
+      "url": "https://main.syntexa.app"
+    },
+    "publisher": {
+      "@type": "Organization", 
+      "name": "Syntexa",
+      "url": "https://main.syntexa.app"
+    }
+  }
+
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
+      <Head>
+        <title>Career Blog - AI Resume Tips, Job Search Strategies & Professional Development | Syntexa</title>
+        <meta name="description" content="Expert career advice from Syntexa's AI resume specialists. Learn resume optimization, cover letter writing, cold email strategies, LinkedIn tips, and interview preparation techniques." />
+        <meta name="keywords" content="career blog, resume tips, job search strategies, AI resume optimization, cover letter advice, cold email templates, LinkedIn optimization, interview preparation, career development, professional growth, job hunting tips, resume writing guide, career coaching blog, ATS resume tips, salary negotiation" />
+        <meta property="og:title" content="Syntexa Career Blog - AI Resume Tips & Job Search Strategies" />
+        <meta property="og:description" content="Expert career advice, AI resume optimization tips, and job search strategies from Syntexa's career professionals." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://main.syntexa.app/blogs" />
+        <meta property="og:image" content="https://main.syntexa.app/professional-linkedin-profile.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Syntexa Career Blog - Resume & Job Tips" />
+        <meta name="twitter:description" content="Expert career advice, resume optimization tips, and job search strategies." />
+        <meta name="twitter:image" content="https://main.syntexa.app/professional-linkedin-profile.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(blogStructuredData) }}
+        />
+      </Head>
       {/* Dynamic Grid Background */}
       <div className="absolute inset-0">
         <div

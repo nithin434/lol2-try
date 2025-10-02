@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Head from "next/head"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, FileText, Users, CreditCard, AlertTriangle, Scale, Sparkles } from "lucide-react"
@@ -19,8 +20,43 @@ export default function TermsPage() {
     return () => window.removeEventListener("mousemove", handleMouseMove)
   }, [])
 
+  // Structured data for Terms page
+  const termsStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Terms of Service - Syntexa AI Career Platform",
+    "description": "Terms of service and user agreement for Syntexa's AI-powered resume analyzer and career acceleration platform.",
+    "url": "https://main.syntexa.app/terms",
+    "mainEntity": {
+      "@type": "TermsOfService",
+      "name": "Syntexa Terms of Service",
+      "provider": {
+        "@type": "Organization",
+        "name": "Syntexa",
+        "url": "https://main.syntexa.app"
+      }
+    }
+  }
+
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
+      <Head>
+        <title>Terms of Service - Legal Agreement | Syntexa AI Career Platform</title>
+        <meta name="description" content="Terms of service and user agreement for Syntexa's AI-powered resume analyzer and career acceleration platform. Learn about our service terms, user responsibilities, and legal policies." />
+        <meta name="keywords" content="terms of service, user agreement, legal terms, privacy policy, AI resume analyzer terms, career platform agreement, service conditions, user responsibilities, legal policies" />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Terms of Service - Syntexa Legal Agreement" />
+        <meta property="og:description" content="Terms of service and user agreement for Syntexa's AI-powered career acceleration platform." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://main.syntexa.app/terms" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Syntexa Terms of Service" />
+        <meta name="twitter:description" content="Legal terms and user agreement for our AI career platform." />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(termsStructuredData) }}
+        />
+      </Head>
       {/* Dynamic Grid Background */}
       <div className="absolute inset-0">
         <div

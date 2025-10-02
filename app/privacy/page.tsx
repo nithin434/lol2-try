@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Head from "next/head"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, Lock, Eye, Database, UserCheck, Globe, Sparkles } from "lucide-react"
@@ -19,8 +20,43 @@ export default function PrivacyPage() {
     return () => window.removeEventListener("mousemove", handleMouseMove)
   }, [])
 
+  // Structured data for Privacy page
+  const privacyStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Privacy Policy - Syntexa AI Career Platform",
+    "description": "Privacy policy and data protection information for Syntexa's AI-powered resume analyzer and career acceleration platform.",
+    "url": "https://main.syntexa.app/privacy",
+    "mainEntity": {
+      "@type": "PrivacyPolicy",
+      "name": "Syntexa Privacy Policy",
+      "provider": {
+        "@type": "Organization",
+        "name": "Syntexa",
+        "url": "https://main.syntexa.app"
+      }
+    }
+  }
+
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
+      <Head>
+        <title>Privacy Policy - Data Protection & Security | Syntexa AI Career Platform</title>
+        <meta name="description" content="Privacy policy and data protection information for Syntexa's AI-powered resume analyzer. Learn how we protect your personal information and career data with enterprise-grade security." />
+        <meta name="keywords" content="privacy policy, data protection, security, AI resume analyzer privacy, career data security, personal information protection, GDPR compliance, data encryption, privacy rights" />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Privacy Policy - Syntexa Data Protection" />
+        <meta property="og:description" content="Privacy policy and data protection information for Syntexa's AI-powered career platform." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://main.syntexa.app/privacy" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Syntexa Privacy Policy" />
+        <meta name="twitter:description" content="Data protection and privacy policy for our AI career platform." />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(privacyStructuredData) }}
+        />
+      </Head>
       {/* Dynamic Grid Background */}
       <div className="absolute inset-0">
         <div

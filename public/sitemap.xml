@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Homepage -->
+  <url>
+    <loc>https://syntexa.app/</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Main Pages -->
+  <url>
+    <loc>https://syntexa.app/about</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://syntexa.app/contact</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://syntexa.app/upload</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Blog Pages -->
+  <url>
+    <loc>https://syntexa.app/blogs</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Individual Blog Posts -->
+  <url>
+    <loc>https://syntexa.app/blogs/ats-resume-optimization-secrets</loc>
+    <lastmod>2024-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://syntexa.app/resume-optimization.png</image:loc>
+      <image:title>ATS Resume Optimization Secrets</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://syntexa.app/blogs/cold-email-templates-87-response-rates</loc>
+    <lastmod>2024-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://syntexa.app/email-templates.png</image:loc>
+      <image:title>Cold Email Templates That Work</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://syntexa.app/blogs/linkedin-optimization-complete-guide</loc>
+    <lastmod>2024-01-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://syntexa.app/professional-linkedin-profile.png</image:loc>
+      <image:title>LinkedIn Optimization Guide</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://syntexa.app/blogs/salary-negotiation-tactics-2024</loc>
+    <lastmod>2024-01-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://syntexa.app/salary-negotiation-meeting.png</image:loc>
+      <image:title>Salary Negotiation Tactics</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://syntexa.app/blogs/cover-letter-mistakes-avoid</loc>
+    <lastmod>2024-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://syntexa.app/cover-letter-mistakes.png</image:loc>
+      <image:title>Cover Letter Mistakes to Avoid</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://syntexa.app/blogs/remote-work-interview-preparation-guide</loc>
+    <lastmod>2024-01-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Legal Pages -->
+  <url>
+    <loc>https://syntexa.app/terms</loc>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://syntexa.app/privacy</loc>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>

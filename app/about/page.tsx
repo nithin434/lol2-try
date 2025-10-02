@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Head from "next/head"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -20,8 +21,59 @@ export default function AboutPage() {
     return () => window.removeEventListener("mousemove", handleMouseMove)
   }, [])
 
+  // Structured data for About page
+  const aboutStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Syntexa - AI Career Acceleration Company",
+    "description": "Learn about Syntexa's mission to transform careers through AI-powered resume optimization, job matching, and career acceleration tools.",
+    "url": "https://main.syntexa.app/about",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Syntexa",
+      "description": "AI-powered career acceleration platform helping professionals optimize their resumes, generate cover letters, and accelerate their job search with advanced artificial intelligence.",
+      "url": "https://main.syntexa.app",
+      "logo": "https://main.syntexa.app/logo.png",
+      "foundingDate": "2024",
+      "founder": {
+        "@type": "Person",
+        "name": "Syntexa Team"
+      },
+      "sameAs": [
+        "https://twitter.com/syntexa",
+        "https://linkedin.com/company/syntexa",
+        "https://discord.gg/qNHAJzYQ"
+      ],
+      "serviceType": [
+        "AI Resume Analysis",
+        "Career Coaching",
+        "Job Search Optimization",
+        "Cover Letter Generation",
+        "Cold Email Templates"
+      ]
+    }
+  }
+
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
+      <Head>
+        <title>About Syntexa - AI-Powered Career Acceleration Company | Our Mission & Story</title>
+        <meta name="description" content="Discover Syntexa's mission to transform careers through AI-powered resume optimization, job matching, and career acceleration. Learn about our AI technology, team, and commitment to helping professionals succeed." />
+        <meta name="keywords" content="about syntexa, AI career company, resume optimization company, career acceleration platform, AI recruiting technology, job search innovation, career coaching AI, professional development tools, resume analysis company, job matching algorithm, career growth platform" />
+        <meta property="og:title" content="About Syntexa - AI Career Acceleration Company" />
+        <meta property="og:description" content="Learn about Syntexa's mission to transform careers through AI-powered resume optimization and career acceleration tools." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://main.syntexa.app/about" />
+        <meta property="og:image" content="https://main.syntexa.app/professional-linkedin-profile.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About Syntexa - AI Career Company" />
+        <meta name="twitter:description" content="Discover how Syntexa transforms careers through AI-powered resume optimization and career acceleration." />
+        <meta name="twitter:image" content="https://main.syntexa.app/professional-linkedin-profile.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutStructuredData) }}
+        />
+      </Head>
       {/* Dynamic Grid Background */}
       <div className="absolute inset-0">
         <div

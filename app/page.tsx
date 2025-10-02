@@ -12,6 +12,7 @@ import { LogoScroll } from "@/components/logo-scroll"
 import { ResumeShowcase } from "@/components/resume-showcase"
 import { EnhancedFooter } from "@/components/enhanced-footer"
 import { useState, useEffect } from "react"
+import Head from "next/head"
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false)
@@ -38,8 +39,66 @@ export default function Home() {
     }
   }, [])
 
+  // Structured data for homepage
+  const homepageStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Syntexa - AI Resume Analyzer & Career Acceleration",
+    "description": "Transform your job search with AI-powered resume optimization, cover letter generator, cold email templates, and career insights. Get hired faster with advanced AI tools.",
+    "url": "https://main.syntexa.app",
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "Syntexa AI Resume Analyzer",
+      "applicationCategory": "BusinessApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "AI Resume Analysis",
+        "Cover Letter Generator",
+        "Cold Email Templates", 
+        "ATS Compatibility Check",
+        "Career Insights Dashboard",
+        "Job Matching Algorithm",
+        "Resume Optimization",
+        "Interview Preparation"
+      ]
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://main.syntexa.app"
+        }
+      ]
+    }
+  }
+
   return (
     <div className="flex flex-col min-h-screen bg-white relative">
+      <Head>
+        <title>Syntexa - AI Resume Analyzer, Cover Letter Generator & Career Tools</title>
+        <meta name="description" content="Transform your job search with Syntexa's AI-powered resume analyzer, cover letter generator, cold email templates, and career acceleration tools. Get hired faster with our advanced AI technology." />
+        <meta name="keywords" content="AI resume analyzer, cover letter generator, cold email templates, ATS resume checker, job search tools, career acceleration, resume optimization, AI career coach, job application tools, resume scanner, interview preparation, LinkedIn optimization, salary negotiation, professional resume, career insights, job matching, resume keywords, applicant tracking system, career development, resume builder, resume analysis, AI recruiting tools" />
+        <meta property="og:title" content="Syntexa - AI Resume Analyzer & Career Acceleration Platform" />
+        <meta property="og:description" content="Transform your job search with AI-powered resume optimization, cover letter generator, and career insights. Get hired faster with advanced AI tools." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://main.syntexa.app" />
+        <meta property="og:image" content="https://main.syntexa.app/resume-optimization.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Syntexa - AI Resume Analyzer & Career Tools" />
+        <meta name="twitter:description" content="Transform your job search with AI-powered resume optimization, cover letter generator, and career insights." />
+        <meta name="twitter:image" content="https://main.syntexa.app/resume-optimization.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageStructuredData) }}
+        />
+      </Head>
       {/* White overlay that covers everything initially */}
       <div className={`fixed inset-0 bg-white z-[100] transition-opacity duration-1000 ${
         isVisible ? 'opacity-0 pointer-events-none' : 'opacity-100'
