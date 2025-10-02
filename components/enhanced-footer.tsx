@@ -2,7 +2,6 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { 
-  Shield, 
   CheckCircle, 
   Mail, 
   Phone, 
@@ -33,9 +32,6 @@ export function EnhancedFooter() {
             {/* Company info */}
             <div className="lg:col-span-1">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center">
-                  <Shield className="h-6 w-6 text-white" />
-                </div>
                 <span className="font-bold text-2xl">
                   <span className="text-emerald-400">Syn</span>
                   <span className="text-white">texa</span>

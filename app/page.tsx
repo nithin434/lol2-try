@@ -1,14 +1,13 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { CheckCircle, Shield, ChevronDown, Play, ArrowRight } from "lucide-react"
+import { CheckCircle, ChevronDown, Play, ArrowRight } from "lucide-react"
 import { HeroSection } from "@/components/hero-section"
 import { HowItWorks } from "@/components/how-it-works"
 import { FeatureSection } from "@/components/feature-section"
 import { SocialProof } from "@/components/social-proof"
 import { LogoScroll } from "@/components/logo-scroll"
 import { ResumeShowcase } from "@/components/resume-showcase"
-import { SecurityFeatures } from "@/components/security-features"
 import { EnhancedFooter } from "@/components/enhanced-footer"
 
 export default function Home() {
@@ -17,9 +16,6 @@ export default function Home() {
       <header className="bg-white/90 backdrop-blur-lg border-b border-gray-200/50 sticky top-0 z-50 shadow-sm">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg">
-              <Shield className="h-5 w-5 text-white" />
-            </div>
             <span className="font-bold text-2xl">
               <span className="text-emerald-600">Syn</span>
               <span className="text-gray-900">texa</span>
@@ -181,7 +177,6 @@ export default function Home() {
         <HowItWorks />
         <ResumeShowcase />
         <FeatureSection />
-        <SecurityFeatures />
         <SocialProof />
       </main>
 

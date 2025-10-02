@@ -5,7 +5,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, Shield, Target, Users, Zap, Heart, Globe, Award, TrendingUp, Sparkles } from "lucide-react"
+import { ArrowLeft, Target, Users, Zap, Heart, Globe, Award, TrendingUp, Sparkles, Lock } from "lucide-react"
 
 export default function AboutPage() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -53,9 +53,6 @@ export default function AboutPage() {
             <span>Back to Home</span>
           </Link>
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center">
-              <Shield className="h-5 w-5 text-white" />
-            </div>
             <span className="font-bold text-xl">
               <span className="text-emerald-400">Syn</span>
               <span className="text-white">texa</span>
@@ -181,7 +178,7 @@ export default function AboutPage() {
                     color: "red",
                   },
                   {
-                    icon: Shield,
+                    icon: Lock,
                     title: "Privacy First",
                     description:
                       "Your career data is sacred. We use bank-level security and never share your information without explicit consent.",

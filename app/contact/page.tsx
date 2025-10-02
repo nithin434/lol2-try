@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, Shield, Mail, Phone, MapPin, Clock, Send, MessageCircle } from "lucide-react"
+import { ArrowLeft, Mail, Phone, MapPin, Clock, Send, MessageCircle } from "lucide-react"
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -68,9 +68,6 @@ export default function ContactPage() {
             <span>Back to Home</span>
           </Link>
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center">
-              <Shield className="h-5 w-5 text-white" />
-            </div>
             <span className="font-bold text-xl">
               <span className="text-emerald-400">Syn</span>
               <span className="text-white">texa</span>
