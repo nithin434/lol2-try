@@ -3,52 +3,7 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
-import { Star, Users, TrendingUp, Clock } from "lucide-react"
-
-const companies = [
-  {
-    name: "Google",
-    logo: "/placeholder.svg?height=60&width=120&text=Google",
-    hired: 127,
-    avgSalary: "$165K",
-    recentHire: "2 days ago",
-  },
-  {
-    name: "Meta",
-    logo: "/placeholder.svg?height=60&width=120&text=Meta",
-    hired: 89,
-    avgSalary: "$158K",
-    recentHire: "1 day ago",
-  },
-  {
-    name: "Amazon",
-    logo: "/placeholder.svg?height=60&width=120&text=Amazon",
-    hired: 156,
-    avgSalary: "$142K",
-    recentHire: "3 hours ago",
-  },
-  {
-    name: "Microsoft",
-    logo: "/placeholder.svg?height=60&width=120&text=Microsoft",
-    hired: 94,
-    avgSalary: "$152K",
-    recentHire: "5 hours ago",
-  },
-  {
-    name: "Apple",
-    logo: "/placeholder.svg?height=60&width=120&text=Apple",
-    hired: 73,
-    avgSalary: "$168K",
-    recentHire: "1 day ago",
-  },
-  {
-    name: "Netflix",
-    logo: "/placeholder.svg?height=60&width=120&text=Netflix",
-    hired: 45,
-    avgSalary: "$175K",
-    recentHire: "6 hours ago",
-  },
-]
+import { Star, Users, TrendingUp } from "lucide-react"
 
 const testimonials = [
   {
@@ -129,69 +84,11 @@ export function SocialProof() {
           </p>
         </div>
 
-        {/* Live Activity Feed */}
-        <div
-          className={`bg-black text-white rounded-2xl p-6 mb-16 transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-        >
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-            <span className="font-semibold">Live Hiring Activity</span>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-            <div className="flex items-center gap-3">
-              <Clock className="w-4 h-4 text-green-400" />
-              <span>Jessica M. just got hired at Apple - $168K</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <Clock className="w-4 h-4 text-green-400" />
-              <span>David L. landed Microsoft role - $152K</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <Clock className="w-4 h-4 text-green-400" />
-              <span>Maria S. joined Google team - $165K</span>
-            </div>
-          </div>
-        </div>
 
-        {/* Company Grid with Enhanced Stats */}
-        <div
-          className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-16 transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-        >
-          {companies.map((company, index) => (
-            <div
-              key={company.name}
-              className="group relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="text-center">
-                <div className="mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Image
-                    src={company.logo || "/placeholder.svg"}
-                    alt={`${company.name} logo`}
-                    width={120}
-                    height={60}
-                    className="mx-auto"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <div className="font-bold text-black text-lg">{company.hired}</div>
-                  <div className="text-sm text-gray-600">hired</div>
-                  <div className="text-xs text-green-600 font-semibold">{company.avgSalary} avg</div>
-                  <div className="text-xs text-gray-500">Last hire: {company.recentHire}</div>
-                </div>
-              </div>
-
-              {/* Floating badge */}
-              <div className="absolute -top-2 -right-2 bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                +{company.hired}
-              </div>
-            </div>
-          ))}
-        </div>
 
         {/* Enhanced Stats */}
         <div
-          className={`grid grid-cols-1 md:grid-cols-4 gap-6 mb-16 transition-all duration-1000 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+          className={`grid grid-cols-1 md:grid-cols-4 gap-6 mb-16 transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
         >
           <div className="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
             <div className="text-4xl font-bold text-black mb-2">10,000+</div>
@@ -217,7 +114,7 @@ export function SocialProof() {
 
         {/* Enhanced Testimonials */}
         <div
-          className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 delay-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+          className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
         >
           {testimonials.map((testimonial, index) => (
             <div
@@ -264,7 +161,7 @@ export function SocialProof() {
 
         {/* Urgency CTA */}
         <div
-          className={`text-center mt-16 transition-all duration-1000 delay-900 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+          className={`text-center mt-16 transition-all duration-1000 delay-400 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
         >
           <div className="bg-black text-white rounded-2xl p-8 max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold mb-4">Don't Let Your Dream Job Get Filled</h3>

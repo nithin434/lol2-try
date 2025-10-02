@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Brain, Mail, Target, Zap, ArrowRight, Play, CheckCircle, Clock, DollarSign } from "lucide-react"
+import { Brain, Mail, Target, Zap, ArrowRight, CheckCircle, TrendingUp, DollarSign } from "lucide-react"
 
 const features = [
   {
@@ -19,7 +19,11 @@ const features = [
       "Content suggestions that get interviews",
     ],
     results: "5x more interviews guaranteed",
-    demo: "/placeholder.svg?height=300&width=400&text=Resume+Analyzer+Demo",
+    stats: [
+      { label: "ATS Pass Rate", value: "96%", color: "emerald" },
+      { label: "Avg Interview Increase", value: "5x", color: "blue" },
+      { label: "Time to Results", value: "< 5 min", color: "purple" },
+    ],
     hook: "Why 97% of resumes get auto-rejected (and how to be in the 3%)",
   },
   {
@@ -35,7 +39,11 @@ const features = [
       "Templates from successful hires",
     ],
     results: "3x more recruiter responses",
-    demo: "/placeholder.svg?height=300&width=400&text=Email+Generator+Demo",
+    stats: [
+      { label: "Response Rate", value: "67%", color: "emerald" },
+      { label: "Time Saved", value: "90%", color: "blue" },
+      { label: "Interview Conversion", value: "3x", color: "purple" },
+    ],
     hook: "The 3-sentence email that got 12 FAANG interviews",
   },
   {
@@ -51,7 +59,11 @@ const features = [
       "Negotiation scripts that work",
     ],
     results: "$45K average salary increase",
-    demo: "/placeholder.svg?height=300&width=400&text=Job+Matching+Demo",
+    stats: [
+      { label: "Avg Salary Increase", value: "$45K", color: "emerald" },
+      { label: "Hidden Jobs Found", value: "80%", color: "blue" },
+      { label: "Negotiation Success", value: "92%", color: "purple" },
+    ],
     hook: "Why you're probably underpaid by $30K+ (and how to fix it)",
   },
 ]
@@ -83,145 +95,124 @@ export function FeatureSection() {
         <div
           className={`text-center mb-16 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
         >
-          <Badge className="bg-black text-white mb-4">
+          <Badge className="bg-emerald-600 text-white mb-4">
             <Zap className="w-4 h-4 mr-2" />
             The Complete Job Search Arsenal
           </Badge>
-          <h2 className="text-4xl lg:text-5xl font-bold text-black mb-4">
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Stop Playing Job Search
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-black">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-700">
               {" "}
               Guessing Games
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            <span className="font-bold text-black">Every tool you need to dominate your job search.</span> No more
+            <span className="font-bold text-gray-900">Every tool you need to dominate your job search.</span> No more
             wondering why you're not getting interviews.
           </p>
         </div>
 
-        {/* Feature Tabs */}
+        {/* Feature Cards Grid */}
         <div
-          className={`flex flex-col lg:flex-row gap-12 transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+          className={`grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16 transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
         >
-          {/* Feature List */}
-          <div className="lg:w-1/2 space-y-6">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 border-2 ${
-                  activeFeature === index
-                    ? "bg-black text-white shadow-2xl scale-105 border-black"
-                    : "bg-white hover:bg-gray-50 shadow-lg hover:shadow-xl border-gray-200"
-                }`}
-                onClick={() => setActiveFeature(index)}
-              >
-                <div className="flex items-start gap-4">
-                  <div className={`p-3 rounded-xl ${activeFeature === index ? "bg-white/20" : "bg-gray-100"}`}>
-                    <feature.icon className={`w-6 h-6 ${activeFeature === index ? "text-white" : "text-black"}`} />
-                  </div>
-                  <div className="flex-1">
-                    <div className="mb-2">
-                      <h3 className={`text-xl font-bold mb-1 ${activeFeature === index ? "text-white" : "text-black"}`}>
-                        {feature.title}
-                      </h3>
-                      <p className={`text-sm ${activeFeature === index ? "text-gray-300" : "text-gray-600"}`}>
-                        {feature.subtitle}
-                      </p>
-                    </div>
-                    <p className={`mb-4 ${activeFeature === index ? "text-gray-200" : "text-gray-600"}`}>
-                      {feature.description}
-                    </p>
-
-                    {/* Benefits Grid */}
-                    <div className="grid grid-cols-1 gap-2 mb-4">
-                      {feature.benefits.map((benefit, i) => (
-                        <div key={i} className="flex items-center gap-2">
-                          <CheckCircle
-                            className={`w-4 h-4 ${activeFeature === index ? "text-green-400" : "text-green-500"}`}
-                          />
-                          <span className={`text-sm ${activeFeature === index ? "text-gray-200" : "text-gray-600"}`}>
-                            {benefit}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Results Badge */}
-                    <div
-                      className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-semibold ${
-                        activeFeature === index ? "bg-green-500/20 text-green-300" : "bg-green-100 text-green-800"
-                      }`}
-                    >
-                      <DollarSign className="w-4 h-4" />
-                      {feature.results}
-                    </div>
-                  </div>
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group"
+            >
+              {/* Icon and Title */}
+              <div className="mb-6">
+                <div className="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-emerald-600 transition-all duration-300">
+                  <feature.icon className="w-7 h-7 text-emerald-600 group-hover:text-white transition-colors duration-300" />
                 </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
+                <p className="text-sm text-emerald-600 font-semibold mb-3">{feature.subtitle}</p>
+                <p className="text-gray-600">{feature.description}</p>
               </div>
-            ))}
-          </div>
 
-          {/* Feature Demo */}
-          <div className="lg:w-1/2">
-            <div className="sticky top-8">
-              <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-200">
-                <div className="bg-gradient-to-r from-black to-gray-800 p-4">
-                  <div className="flex items-center gap-3">
-                    <div className="flex gap-2">
-                      <div className="w-3 h-3 bg-white/30 rounded-full"></div>
-                      <div className="w-3 h-3 bg-white/30 rounded-full"></div>
-                      <div className="w-3 h-3 bg-white/30 rounded-full"></div>
-                    </div>
-                    <div className="text-white font-medium">{features[activeFeature].title}</div>
+              {/* Benefits List */}
+              <div className="space-y-3 mb-6">
+                {feature.benefits.map((benefit, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-gray-600">{benefit}</span>
                   </div>
-                </div>
-                <div className="p-8">
-                  {/* Hook */}
-                  <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Clock className="w-4 h-4 text-yellow-600" />
-                      <span className="text-sm font-semibold text-yellow-800">Pro Tip</span>
-                    </div>
-                    <p className="text-sm text-yellow-700">{features[activeFeature].hook}</p>
-                  </div>
-
-                  <img
-                    src={features[activeFeature].demo || "/placeholder.svg"}
-                    alt={`${features[activeFeature].title} Demo`}
-                    className="w-full h-64 object-cover rounded-lg mb-6 border border-gray-200"
-                  />
-                  <div className="flex gap-4">
-                    <Button className="bg-black hover:bg-gray-800 flex-1">
-                      <Play className="w-4 h-4 mr-2" />
-                      Try This Tool Free
-                    </Button>
-                    <Button variant="outline" className="border-gray-300 text-black hover:bg-gray-50">
-                      See Results
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
-                  </div>
-                </div>
+                ))}
               </div>
+
+              {/* Stats Grid */}
+              <div className="grid grid-cols-3 gap-3 mb-6">
+                {feature.stats.map((stat, i) => (
+                  <div key={i} className="text-center p-3 bg-gray-50 rounded-lg group-hover:bg-emerald-50 transition-colors duration-300">
+                    <div className={`text-lg font-bold text-${stat.color}-600`}>{stat.value}</div>
+                    <div className="text-xs text-gray-500">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Results Badge */}
+              <div className="flex items-center gap-2 p-3 bg-emerald-50 rounded-lg mb-6 group-hover:bg-emerald-100 transition-colors duration-300">
+                <DollarSign className="w-5 h-5 text-emerald-600" />
+                <span className="font-semibold text-emerald-800">{feature.results}</span>
+              </div>
+
+              {/* Pro Tip */}
+              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-6">
+                <div className="flex items-center gap-2 mb-2">
+                  <TrendingUp className="w-4 h-4 text-yellow-600" />
+                  <span className="text-sm font-semibold text-yellow-800">Pro Tip</span>
+                </div>
+                <p className="text-sm text-yellow-700">{feature.hook}</p>
+              </div>
+
+              {/* CTA Button */}
+              <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white">
+                Try This Tool Free
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
             </div>
-          </div>
+          ))}
         </div>
 
         {/* Bottom CTA */}
         <div
-          className={`text-center mt-16 transition-all duration-1000 delay-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+          className={`text-center transition-all duration-1000 delay-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
         >
-          <div className="bg-gray-50 rounded-2xl p-8 max-w-3xl mx-auto border border-gray-200">
-            <h3 className="text-2xl font-bold text-black mb-4">Ready to Stop Getting Rejected?</h3>
-            <p className="text-gray-600 mb-6">
+          <div className="bg-gradient-to-br from-emerald-50 to-white rounded-2xl p-8 max-w-4xl mx-auto border border-emerald-100 shadow-lg">
+            <h3 className="text-3xl font-bold text-gray-900 mb-4">Ready to Stop Getting Rejected?</h3>
+            <p className="text-gray-600 mb-8 max-w-2xl mx-auto text-lg">
               Join 2,847 people who got hired this month using our AI-powered tools.
-              <span className="font-semibold text-black"> Your dream job is waiting.</span>
+              <span className="font-semibold text-gray-900"> Your dream job is waiting.</span>
             </p>
-            <Button size="lg" className="bg-black hover:bg-gray-800 text-lg px-8 py-4">
-              Start Getting Interviews Now - FREE
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <p className="text-sm text-gray-500 mt-3">
+            
+            {/* Stats Row */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-emerald-600 mb-1">96%</div>
+                <div className="text-sm text-gray-600">ATS Pass Rate</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-emerald-600 mb-1">5x</div>
+                <div className="text-sm text-gray-600">More Interviews</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-emerald-600 mb-1">$45K</div>
+                <div className="text-sm text-gray-600">Avg Salary Increase</div>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-lg px-8 py-4">
+                Start Getting Interviews Now - FREE
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+              <Button variant="outline" size="lg" className="border-emerald-600 text-emerald-600 hover:bg-emerald-50 text-lg px-8 py-4">
+                View Success Stories
+              </Button>
+            </div>
+            
+            <p className="text-sm text-gray-500 mt-4">
               No credit card required • Results in 5 minutes • Free forever plan
             </p>
           </div>
