@@ -7,6 +7,7 @@ import { Brain, Mail, Target, Zap, ArrowRight, CheckCircle, TrendingUp, DollarSi
 
 const features = [
   {
+    id: "resume-analyzer",
     icon: Brain,
     title: "AI Resume Analyzer That Actually Works",
     subtitle: "Stop getting auto-rejected by ATS robots",
@@ -27,6 +28,7 @@ const features = [
     hook: "Why 97% of resumes get auto-rejected (and how to be in the 3%)",
   },
   {
+    id: "cold-email-generator",
     icon: Mail,
     title: "Cold Email Generator That Gets Responses",
     subtitle: "Turn ignored emails into interview invitations",
@@ -47,6 +49,7 @@ const features = [
     hook: "The 3-sentence email that got 12 FAANG interviews",
   },
   {
+    id: "job-matching",
     icon: Target,
     title: "Smart Job Matching & Salary Intel",
     subtitle: "Find hidden opportunities and know your worth",
@@ -119,6 +122,7 @@ export function FeatureSection() {
           {features.map((feature, index) => (
             <div
               key={index}
+              id={feature.id}
               className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group"
             >
               {/* Icon and Title */}

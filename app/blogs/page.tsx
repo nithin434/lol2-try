@@ -26,6 +26,7 @@ export default function BlogsPage() {
     {
       id: 1,
       title: "10 ATS Resume Optimization Secrets That Actually Work in 2024",
+      slug: "ats-resume-optimization-secrets",
       excerpt:
         "Discover the latest ATS algorithms and how to optimize your resume to pass through automated screening systems with a 95% success rate.",
       category: "Resume Tips",
@@ -38,6 +39,7 @@ export default function BlogsPage() {
     {
       id: 2,
       title: "Cold Email Templates That Get 87% Response Rates",
+      slug: "cold-email-templates-87-response-rates",
       excerpt:
         "Learn the psychology behind effective cold emails and get access to proven templates that have helped thousands land interviews.",
       category: "Cold Outreach",
@@ -49,6 +51,7 @@ export default function BlogsPage() {
     {
       id: 3,
       title: "Salary Negotiation: How to Increase Your Offer by 25%",
+      slug: "salary-negotiation-increase-offer-25-percent",
       excerpt:
         "Master the art of salary negotiation with data-driven strategies and scripts that have helped professionals secure better compensation.",
       category: "Career Growth",
@@ -60,6 +63,7 @@ export default function BlogsPage() {
     {
       id: 4,
       title: "LinkedIn Profile Optimization: From Zero to Hero",
+      slug: "linkedin-profile-optimization-zero-to-hero",
       excerpt:
         "Transform your LinkedIn profile into a lead magnet that attracts recruiters and opportunities with these proven optimization techniques.",
       category: "LinkedIn",
@@ -71,6 +75,7 @@ export default function BlogsPage() {
     {
       id: 5,
       title: "5 Cover Letter Mistakes That Kill Your Chances",
+      slug: "cover-letter-mistakes-kill-chances",
       excerpt:
         "Avoid these common cover letter pitfalls that immediately disqualify candidates and learn what hiring managers actually want to see.",
       category: "Cover Letters",
@@ -82,6 +87,7 @@ export default function BlogsPage() {
     {
       id: 6,
       title: "Remote Work Interview Preparation: Complete Guide",
+      slug: "remote-work-interview-preparation-guide",
       excerpt:
         "Everything you need to know about acing remote job interviews, from technical setup to answering behavioral questions effectively.",
       category: "Interview Prep",
@@ -209,95 +215,100 @@ export default function BlogsPage() {
             {selectedCategory === "All" && (
               <div className="mb-16">
                 <h2 className="text-2xl font-bold text-white mb-8 text-center">Featured Article</h2>
-                <Card className="bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/10 transition-all duration-500 group overflow-hidden">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-                    <div className="aspect-video lg:aspect-auto relative overflow-hidden">
-                      <img
-                        src={blogPosts[0].image || "/placeholder.svg"}
-                        alt={blogPosts[0].title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                    </div>
-                    <div className="p-8 flex flex-col justify-center">
-                      <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 w-fit mb-4">
-                        {blogPosts[0].category}
-                      </Badge>
-                      <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-emerald-400 transition-colors duration-300">
-                        {blogPosts[0].title}
-                      </h3>
-                      <p className="text-gray-400 mb-6 leading-relaxed">{blogPosts[0].excerpt}</p>
-                      <div className="flex items-center gap-4 text-sm text-gray-500 mb-6">
-                        <div className="flex items-center gap-2">
-                          <User className="w-4 h-4" />
-                          <span>{blogPosts[0].author}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Calendar className="w-4 h-4" />
-                          <span>{blogPosts[0].date}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Clock className="w-4 h-4" />
-                          <span>{blogPosts[0].readTime}</span>
-                        </div>
+                <Link href={`/blogs/${blogPosts[0].slug}`}>
+                  <Card className="bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/10 transition-all duration-500 group overflow-hidden cursor-pointer">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                      <div className="aspect-video lg:aspect-auto relative overflow-hidden">
+                        <img
+                          src={blogPosts[0].image || "/placeholder.svg"}
+                          alt={blogPosts[0].title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                       </div>
-                      <Button className="bg-emerald-600 hover:bg-emerald-700 text-white w-fit group/btn">
-                        Read Article
-                        <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                      </Button>
+                      <div className="p-8 flex flex-col justify-center">
+                        <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 w-fit mb-4">
+                          {blogPosts[0].category}
+                        </Badge>
+                        <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-emerald-400 transition-colors duration-300">
+                          {blogPosts[0].title}
+                        </h3>
+                        <p className="text-gray-400 mb-6 leading-relaxed">{blogPosts[0].excerpt}</p>
+                        <div className="flex items-center gap-4 text-sm text-gray-500 mb-6">
+                          <div className="flex items-center gap-2">
+                            <User className="w-4 h-4" />
+                            <span>{blogPosts[0].author}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Calendar className="w-4 h-4" />
+                            <span>{blogPosts[0].date}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Clock className="w-4 h-4" />
+                            <span>{blogPosts[0].readTime}</span>
+                          </div>
+                        </div>
+                        <Button className="bg-emerald-600 hover:bg-emerald-700 text-white w-fit group/btn">
+                          Read Article
+                          <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                        </Button>
+                      </div>
                     </div>
-                  </div>
-                </Card>
+                  </Card>
+                </Link>
               </div>
             )}
 
             {/* Blog Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPosts.slice(selectedCategory === "All" ? 1 : 0).map((post, index) => (
-                <Card
-                  key={post.id}
-                  className="bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/10 transition-all duration-500 group overflow-hidden"
-                >
-                  <div className="aspect-video relative overflow-hidden">
-                    <img
-                      src={post.image || "/placeholder.svg"}
-                      alt={post.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                    <Badge className="absolute top-4 left-4 bg-emerald-500/20 text-emerald-400 border-emerald-500/30 backdrop-blur-sm">
-                      {post.category}
-                    </Badge>
-                  </div>
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors duration-300 line-clamp-2">
-                      {post.title}
-                    </h3>
-                    <p className="text-gray-400 mb-4 text-sm leading-relaxed line-clamp-3">{post.excerpt}</p>
-                    <div className="flex items-center gap-4 text-xs text-gray-500 mb-4">
-                      <div className="flex items-center gap-1">
-                        <User className="w-3 h-3" />
-                        <span>{post.author}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3" />
-                        <span>{post.date}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Clock className="w-3 h-3" />
-                        <span>{post.readTime}</span>
-                      </div>
+                <Link key={post.id} href={`/blogs/${post.slug}`}>
+                  <Card className="bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/10 transition-all duration-500 group overflow-hidden cursor-pointer h-full">
+                    <div className="aspect-video relative overflow-hidden">
+                      <img
+                        src={post.image || "/placeholder.svg"}
+                        alt={post.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                      <Badge className="absolute top-4 left-4 bg-emerald-500/20 text-emerald-400 border-emerald-500/30 backdrop-blur-sm">
+                        {post.category}
+                      </Badge>
                     </div>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="bg-white/5 border-white/20 text-gray-400 hover:bg-white/10 hover:text-white backdrop-blur-sm w-full group/btn"
-                    >
-                      Read More
-                      <ArrowRight className="ml-2 w-3 h-3 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                    </Button>
-                  </CardContent>
-                </Card>
+                    <CardContent className="p-6 flex flex-col justify-between flex-1">
+                      <div>
+                        <h3 className="text-lg font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors duration-300 line-clamp-2">
+                          {post.title}
+                        </h3>
+                        <p className="text-gray-400 mb-4 text-sm leading-relaxed line-clamp-3">{post.excerpt}</p>
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-4 text-xs text-gray-500 mb-4">
+                          <div className="flex items-center gap-1">
+                            <User className="w-3 h-3" />
+                            <span>{post.author}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Calendar className="w-3 h-3" />
+                            <span>{post.date}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Clock className="w-3 h-3" />
+                            <span>{post.readTime}</span>
+                          </div>
+                        </div>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="bg-white/5 border-white/20 text-gray-400 hover:bg-white/10 hover:text-white backdrop-blur-sm w-full group/btn"
+                        >
+                          Read More
+                          <ArrowRight className="ml-2 w-3 h-3 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
               ))}
             </div>
 

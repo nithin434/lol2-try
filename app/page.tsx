@@ -31,31 +31,31 @@ export default function Home() {
               <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 <div className="p-4 space-y-2">
                   <Link
-                    href="#resume"
+                    href="#resume-analyzer"
                     className="block px-4 py-3 rounded-lg hover:bg-emerald-50 transition-colors group/item"
                   >
                     <div className="font-medium text-gray-900 group-hover/item:text-emerald-600">ATS Resume Wizard</div>
                   </Link>
                   <Link
-                    href="#"
+                    href="#cold-email-generator"
                     className="block px-4 py-3 rounded-lg hover:bg-emerald-50 transition-colors group/item"
                   >
                     <div className="font-medium text-gray-900 group-hover/item:text-emerald-600">Cold Email Magic</div>
                   </Link>
                   <Link
-                    href="#"
+                    href="#job-matching"
                     className="block px-4 py-3 rounded-lg hover:bg-emerald-50 transition-colors group/item"
                   >
                     <div className="font-medium text-gray-900 group-hover/item:text-emerald-600">
-                      Cover Letter Crafter
+                      Job Matching & Salary Intel
                     </div>
                   </Link>
                   <Link
-                    href="#"
+                    href="#resume"
                     className="block px-4 py-3 rounded-lg hover:bg-emerald-50 transition-colors group/item"
                   >
                     <div className="font-medium text-gray-900 group-hover/item:text-emerald-600">
-                      Salary & Insights Hub
+                      Resume Showcase
                     </div>
                   </Link>
                 </div>
