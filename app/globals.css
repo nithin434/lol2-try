@@ -6,6 +6,35 @@
   .text-balance {
     text-wrap: balance;
   }
+  
+  /* Custom animations for navbar */
+  .animate-navbar-entrance {
+    animation: navbarEntrance 0.8s ease-out;
+  }
+  
+  .animate-navbar-scroll {
+    animation: navbarScroll 0.5s ease-out;
+  }
+}
+
+@keyframes navbarEntrance {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes navbarScroll {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    transform: translateY(-8px) scale(0.95);
+  }
 }
 
 @layer base {
